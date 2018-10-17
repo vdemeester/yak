@@ -6,7 +6,7 @@ thus I tend to create/destroy/… kubernetes a lot.
 
 This is kind-of a *pot-pourri* of commands
 
-## Goals
+## TODOs
 
 - [ ] Provision a kubernetes cluster (`yak m/mk/mo`)
   - [ ] `minikube`
@@ -17,4 +17,4 @@ This is kind-of a *pot-pourri* of commands
 - [ ] `kubectl` command-line management (aka get same version as
 	  server if possible)
 - [ ] `plumini` ideas (watch, diff, …)
-- [ ] integration with other tools (`skaffold`, `ko`, …) — shell out ?
+- [ ] integration with other tools (`skaffold`, `ko`, `kustomize`, …) — shell out ?
