@@ -21,5 +21,5 @@ This is kind-of a *pot-pourri* of commands
 - [ ] `plumini` ideas (watch, diff, …)
 - [ ] integration with other tools (`skaffold`, `ko`, `kustomize`,
 	  `odo`, …) — shell out ?
-  - [ ] if `cmd` is in lookup path (and there is no)
+  - [x] if `cmd` is in lookup path (and there is no)
   - [ ] integrate with tmux [ex](https://raw.githubusercontent.com/awslabs/aws-service-operator/master/aws-service-operator-example.gif).
