@@ -36,6 +36,7 @@ func Start(cfg Config) error {
 			return err
 		}
 		// You're good to go, create it !
+		fmt.Println("🐂 Starting profile", cfg.Name)
 		if err := minishift("start")(); err != nil {
 			return err
 		}

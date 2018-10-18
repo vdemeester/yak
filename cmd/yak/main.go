@@ -26,7 +26,6 @@ var rootCmd = &cobra.Command{
 	},
 	PersistentPreRunE: func(cmd *cobra.Command, args []string) error {
 		// FIXME(vdemeester) handle config, env, …
-		fmt.Println("🐂")
 		return nil
 	},
 }
