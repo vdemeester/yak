@@ -7,6 +7,8 @@ import (
 
 	"github.com/pkg/errors"
 	"github.com/spf13/cobra"
+	"github.com/vdemeester/yak/cmd/yak/minikube"
+	"github.com/vdemeester/yak/cmd/yak/minishift"
 )
 
 var rootCmd = &cobra.Command{
@@ -39,6 +41,10 @@ func runCommand(cmd string, args []string) error {
 }
 
 func main() {
+	rootCmd.AddCommand(
+		minishift.Cmd(),
+		minikube.Cmd(),
+	)
 	if err := rootCmd.Execute(); err != nil {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)
