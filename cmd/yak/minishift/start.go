@@ -5,6 +5,7 @@ import (
 
 	homedir "github.com/mitchellh/go-homedir"
 	"github.com/spf13/cobra"
+	"github.com/vdemeester/yak/pkgs/config"
 	"github.com/vdemeester/yak/pkgs/minishift"
 )
 
@@ -18,8 +19,8 @@ func startCmd() *cobra.Command {
 			if err != nil {
 				return err
 			}
-			configFile := filepath.Join(home, ".config/yak", args[0]+".hcl")
-			cfg, err := minishift.LoadFile(configFile)
+			configFile := filepath.Join(home, ".config", "yak", "minishift", args[0]+".hcl")
+			cfg, err := config.LoadFile(configFile)
 			if err != nil {
 				return err
 			}

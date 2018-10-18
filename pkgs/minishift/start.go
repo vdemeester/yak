@@ -11,6 +11,7 @@ import (
 	"github.com/minishift/minishift/pkg/minikube/constants"
 	"github.com/minishift/minishift/pkg/minishift/profile"
 	"github.com/pkg/errors"
+	"github.com/vdemeester/yak/pkgs/config"
 )
 
 func init() {
@@ -18,7 +19,7 @@ func init() {
 	cmdState.InstanceDirs = cmdState.NewMinishiftDirs(constants.Minipath)
 }
 
-func Start(cfg Config) error {
+func Start(cfg config.Config) error {
 	profiles := profile.GetProfileList()
 	if !profileExists(cfg.Name, profiles) {
 		if err := createProfile(cfg); err != nil {
@@ -30,7 +31,7 @@ func Start(cfg Config) error {
 	}
 	machineClient := libmachine.NewClient(cmdState.InstanceDirs.Home, cmdState.InstanceDirs.Certs)
 	defer machineClient.Close()
-	host, err := machineClient.Load(cfg.Name)
+	_, err := machineClient.Load(cfg.Name)
 	if err != nil {
 		if _, ok := err.(mcnerror.ErrHostDoesNotExist); !ok {
 			return err
@@ -41,7 +42,6 @@ func Start(cfg Config) error {
 			return err
 		}
 	}
-	fmt.Println("host", host)
 	status, err := cluster.GetHostStatus(machineClient, constants.MachineName)
 	if err != nil {
 		return err
@@ -54,7 +54,7 @@ func Start(cfg Config) error {
 	return nil
 }
 
-func createProfile(cfg Config) error {
+func createProfile(cfg config.Config) error {
 	fmt.Println("🐂 Creating profile", cfg.Name)
 	commands := []func() error{
 		minishift("profile", "set", cfg.Name),

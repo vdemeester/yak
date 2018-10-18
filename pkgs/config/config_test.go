@@ -1,4 +1,4 @@
-package minishift
+package config
 
 import (
 	"testing"
